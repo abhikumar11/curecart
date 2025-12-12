@@ -33,8 +33,6 @@ const Login = () => {
           </div>
 
           <form className="space-y-5">
-
-            {/* Email */}
             <div>
               <label className="block text-gray-700 font-medium mb-1">Email</label>
               <input
