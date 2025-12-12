@@ -1,0 +1,75 @@
+import React from 'react'
+
+const Login = () => {
+  return (
+    <div className="min-h-screen flex flex-col md:flex-row">
+
+      <div className="md:w-1/2 h-64 md:h-auto">
+        <img
+          src="https://images.unsplash.com/photo-1580281657527-47d98bb0f09a"
+          alt="Medicine"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="md:w-1/2 flex items-center justify-center bg-gray-100 p-10">
+        <div className="bg-white w-full max-w-md p-8 rounded-2xl shadow">
+
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+            Login
+          </h2>
+          <button className="w-full border py-2 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-100 transition">
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              className="w-6 h-6"
+              alt=""
+            />
+            <span className="font-medium text-gray-700">Login with Google</span>
+          </button>
+
+          <div className="flex items-center my-5">
+            <div className="flex-grow h-px bg-gray-300"></div>
+            <span className="px-3 text-gray-500 text-sm">or</span>
+            <div className="flex-grow h-px bg-gray-300"></div>
+          </div>
+
+          <form className="space-y-5">
+
+            {/* Email */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Email</label>
+              <input
+                type="email"
+                className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter email"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Password</label>
+              <input
+                type="password"
+                className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter password"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 rounded-xl font-semibold hover:bg-blue-700 transition"
+            >
+              Login
+            </button>
+          </form>
+          <p className="text-center text-sm mt-5 text-gray-700">
+            Don’t have an account?{" "}
+            <a href="#" className="text-blue-600 font-semibold hover:underline">
+              Sign Up
+            </a>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Login
