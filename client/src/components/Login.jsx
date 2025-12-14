@@ -17,21 +17,6 @@ const Login = () => {
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
             Login
           </h2>
-          <button className="w-full border py-2 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-100 transition">
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              className="w-6 h-6"
-              alt=""
-            />
-            <span className="font-medium text-gray-700">Login with Google</span>
-          </button>
-
-          <div className="flex items-center my-5">
-            <div className="flex-grow h-px bg-gray-300"></div>
-            <span className="px-3 text-gray-500 text-sm">or</span>
-            <div className="flex-grow h-px bg-gray-300"></div>
-          </div>
-
           <form className="space-y-5">
             <div>
               <label className="block text-gray-700 font-medium mb-1">Email</label>

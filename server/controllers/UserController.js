@@ -1,12 +1,12 @@
 const UserModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 
-const login = async (req, res) => {
-    const { email, password } = req.body;
+const loginUser = async (req, res) => {
     try {
+        const { email, password } = req.body;
         const user = await UserModel.findOne({ email: email });
         if (user) {
-            const verify = bcrypt.compare(password, user.password);
+            const verify = await bcrypt.compare(password, user.password);
             if (verify) {
                 res.send(200).send("login successfull");
             }
@@ -22,4 +22,23 @@ const login = async (req, res) => {
     }
 }
 
-module.exports = { login };
+const registerUser = async (req, res) => {
+    try {
+        const { email,password,name} = req.body;
+        console.log(req.body);
+        const hashpass=await bcrypt.hash(password,10);
+       const user=await UserModel.create({email,password:hashpass,name});
+       if(user){
+          res.status(200).send("Account created successflly");
+       }
+       else{
+        res.status(401).send("Unable to create account");
+       }
+    } catch (err) {
+            res.status(500).send("Something went wrong");
+    }
+
+
+}
+
+module.exports = { loginUser, registerUser };
