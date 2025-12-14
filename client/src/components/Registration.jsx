@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/actions/UserAction';
+import { Link } from 'react-router-dom';
 
 const Registration = () => {
 
@@ -98,9 +99,9 @@ const Registration = () => {
           </form>
           <p className="text-center text-sm mt-5 text-gray-700">
             Already have an account?{" "}
-            <a href="#" className="text-teal-600 font-semibold hover:underline">
-              Login
-            </a>
+            <Link to={"/login"}  className="text-teal-600 font-semibold hover:underline">
+            Login
+            </Link>
           </p>
 
         </div>
