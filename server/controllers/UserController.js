@@ -1,17 +1,19 @@
 const UserModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
+const jwt=require("jsonwebtoken");
 
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await UserModel.findOne({ email: email });
         if (user) {
-            const verify = await bcrypt.compare(password, user.password);
-            if (verify) {
-                res.send(200).send("login successfull");
+            const hashPass = await bcrypt.compare(password, user.password);
+            if (hashPass) {
+                const token=jwt.sign({userid:user._id},"secretkey",{expiresIn: "1h"})
+                res.status(200).json({msg:"login successfull",token:token,user});
             }
             else {
-                res.send(401).send("invalid password");
+                res.status(401).send("invalid password");
             }
         }
         else {
@@ -26,7 +28,7 @@ const registerUser = async (req, res) => {
     try {
         const { email,password,name} = req.body;
         console.log(req.body);
-        const hashpass=await bcrypt.hash(password,10);
+        const hashpass=await bcrypt.hash(password,12);
        const user=await UserModel.create({email,password:hashpass,name});
        if(user){
           res.status(200).send("Account created successflly");

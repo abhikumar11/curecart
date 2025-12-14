@@ -1,17 +1,17 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import React from "react";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router-dom";
 
 const AdminProtectedRoute = () => {
 
- const token = localStorage.getItem("token");
-    const isAuthenticated = !!token;
-    const redirectPath="/seller/login";
+       const {token} = useSelector((state) => state.userLogin);
+     const isAuthenticated = !!token;
+     const redirectPath = "/seller/login";
 
-    if (!isAuthenticated) {
-        return <Navigate to={redirectPath}replace/>;
-    }
+     if (!isAuthenticated) {
+          return <Navigate to={redirectPath} replace />;
+     }
+     return <Outlet />;
+};
 
-    return <Outlet/>;
-}
-
-export default AdminProtectedRoute
+export default AdminProtectedRoute;
