@@ -2,29 +2,36 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/actions/UserAction';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 const AdminLogin = () => {
 
-    const [frmData, setFrmData] = useState({email:"",password:""});
+    const [frmData, setFrmData] = useState({ email: "", password: "" });
     const dispatch = useDispatch();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
-    const { loading, error,user} = useSelector((state) => state.userLogin);
+    const {loading,error,user} = useSelector((state) => state.userLogin);
 
-    useEffect(()=>{
-            if(user){
-                navigate("/seller/dashboard");
-            }
-    },[navigate,user])
-  
+    useEffect(() => {
+        if (user) {
+            navigate("/seller/dashboard");
+        }
+    }, [navigate, user]);
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error.message||"Login failed");
+        } else if (user) {
+            toast.success("Login successful");
+        }
+    }, [error,user,loading]);
+
     const handleInput = (e) => {
         setFrmData({ ...frmData, [e.target.name]: e.target.value });
     }
-    
+
     const handleSubmit = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         dispatch(loginUser(frmData));
-      
     }
 
     return (
@@ -42,12 +49,6 @@ const AdminLogin = () => {
                         Login
                     </h2>
                     <form className="space-y-5" onSubmit={handleSubmit}>
-                        {error && (
-                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                                <span className="block sm:inline">{error.message || error}</span>
-                            </div>
-                        )}
-
                         <div>
                             <label className="block text-gray-700 font-medium mb-1">Email</label>
                             <input
@@ -73,7 +74,7 @@ const AdminLogin = () => {
                         </div>
                         <button
                             type="submit"
-                            className={`w-full text-white py-2 rounded-xl font-semibold transition ${loading ? 'bg-teal-400 cursor-not-allowed' : 'bg-teal-600 hover:bg-teal-700'}`}
+                            className={`w-full text-white py-2 rounded-xl font-semibold transition hover:cursor-pointer ${loading ? 'bg-teal-400 cursor-not-allowed' : 'bg-teal-600 hover:bg-teal-700'}`}
                             disabled={loading}
                         >
                             {loading ? 'Logging in...' : 'Login'}

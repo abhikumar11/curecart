@@ -1,8 +1,20 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
-
+import { Outlet, Link, useNavigate } from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux";
+import { logoutUser } from '../../redux/actions/UserAction';
+import {toast} from "react-toastify";
 const AdminLayout = () => {
-    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {user}=useSelector((state)=>state.userLogin);
+
+
+    const handleLogout=()=>{
+            dispatch(logoutUser());
+            toast.success("You have been logged out")
+            navigate("/seller/login");
+    }
+
     const adminNavLinks = [
         { name: 'Dashboard', path: '/seller/dashboard', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
         { name: 'Products', path: "/seller/products", icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4' },
@@ -36,18 +48,20 @@ const AdminLayout = () => {
             <div className="flex-1 flex flex-col ml-64">
                 <header className="w-full bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-20">
                     <h1 className="text-xl font-semibold text-gray-800">
-                        Welcome, Username
+                       {user?`Welcome Username`:""} 
                     </h1>
-                  
+                  { user&&(
                     <div className="flex items-center space-x-4 text-gray-600">
                        
-                        <Link 
-                            to="/seller/login" 
-                            className="bg-red-500 text-white px-4 py-1.5 rounded-md text-sm hover:bg-red-600 transition"
+                        <button
+                            className="bg-red-500 text-white px-4 py-1.5 rounded-md text-sm hover:bg-red-600 transition hover:cursor-pointer"
+                            onClick={handleLogout}
                         >
-                            Login
-                        </Link>
-                    </div>
+                            Logout
+                        </button>
+
+                    </div>)
+                    }
                 </header>
 
                 <main className="flex-1 p-6 overflow-y-auto">

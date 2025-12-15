@@ -5,6 +5,7 @@ import {
      LOGIN_USER_FAIL,
      LOGIN_USER_REQUEST,
      LOGIN_USER_SUCCESS,
+     LOGOUT_USER,
 } from "../constants";
 import axios from "axios";
 export const registerUser = (userdata) => async (dispatch) => {
@@ -25,4 +26,9 @@ export const loginUser = (userdata) => async (dispatch) => {
      } catch (err) {
           dispatch({type: LOGIN_USER_FAIL, payload: err.response && err.response.data.message?err.response.data.message:err.message});
      }
+}
+
+export const logoutUser=()=>(dispatch)=>{
+    localStorage.removeItem("token");
+    dispatch({type:LOGOUT_USER});
 }
