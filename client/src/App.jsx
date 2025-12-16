@@ -1,8 +1,8 @@
 import React from 'react'
-import { ToastContainer} from 'react-toastify';
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
 import Login from './components/Login'
 import Registration from './components/Registration'
-import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './components/Home'
 import AdminLayout from "./components/admin/AdminLayout"
@@ -13,12 +13,14 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import AdminProtectedRoute from './components/admin/AdminProtectedRoute'
 import AddProduct from './components/admin/AddProduct';
+import Oders from './components/admin/Oders';
+import ProductList from './components/admin/ProductList';
 const App = () => {
   return (
     <div>
       <ToastContainer position="top-center" autoClose={3000}
-        hideProgressBar={false}
         newestOnTop={false}
+        hideProgressBar={false}
         closeOnClick={false}
         theme="light"
       />
@@ -36,8 +38,9 @@ const App = () => {
           <Route path="login" element={<AdminLogin />} />
           <Route element={<AdminProtectedRoute />}>
             <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="products" element={<AddProduct/>} />
-            <Route path="orders" element={<div>Admin Orders List</div>} />
+            <Route path="products" element={<ProductList />} />
+            <Route path="newproduct" element={<AddProduct />} />
+            <Route path="orders" element={<Oders />} />
             <Route index element={<Navigate to="dashboard" replace />} />
           </Route>
         </Route>
