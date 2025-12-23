@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 const AdminLogin = () => {
 
-    const [frmData, setFrmData] = useState({ email: "", password: "" });
+    const [frmData, setFrmData] = useState({email:"",password:""});
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

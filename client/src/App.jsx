@@ -15,6 +15,7 @@ import AdminProtectedRoute from './components/admin/AdminProtectedRoute'
 import AddProduct from './components/admin/AddProduct';
 import Oders from './components/admin/Oders';
 import ProductList from './components/admin/ProductList';
+import Product from './components/Product';
 const App = () => {
   return (
     <div>
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="order" element={<Order />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
+          <Route path="/category/:cat" element={<Product/>}/>
         </Route>
 
         <Route path="/seller" element={<AdminLayout />}>

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const AdminLayout = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { user } = useSelector((state) => state.userLogin);
+    const { user,token } = useSelector((state) => state.userLogin);
 
     const [isProductOpen, setIsProductOpen] = useState(false);
 
@@ -110,7 +110,7 @@ const AdminLayout = () => {
                     <h1 className="text-xl font-semibold text-gray-800">
                         {user ? `Welcome, ${user.name || 'Seller'}` : ""} 
                     </h1>
-                    {user && (
+                    {token && (
                         <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-1.5 rounded-md text-sm hover:bg-red-600 transition">
                             Logout
                         </button>
