@@ -18,8 +18,8 @@ export const createProductReducer=(state=initialState,action)=>{
 export const loadProductReducer=(state=initialState,action)=>{
     switch(action.type){
         case LOAD_PRODUCT_REQUEST:return {...state,loading:true};
-        case LOAD_PRODUCT_SUCCESS:return{loading:false,success:true,productList:action.payload};
-        case LOAD_PRODUCT_FAIL:return{loading:false,error:action.payload}
+        case LOAD_PRODUCT_SUCCESS:return{...state,loading:false,success:true,productList:action.payload};
+        case LOAD_PRODUCT_FAIL:return{...state,loading:false,error:action.payload}
 
         default:return state;
     }

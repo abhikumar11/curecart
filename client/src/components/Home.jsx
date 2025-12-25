@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ChevronRight, ShieldCheck, Truck, Zap, Star } from 'lucide-react';
 import ProductCard from './ProductCard';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {getProduct} from "../redux/actions/ProductAction";
 const Home = () => {
+  const {loading,error,productList}=useSelector((state)=>state.products);
+
+  const dispatch=useDispatch();
+
+  useEffect(()=>{
+      dispatch(getProduct());
+  },[dispatch])
+
+  console.log(productList);
   return (
     <div className="bg-[#f3f7fb] min-h-screen">
      
@@ -58,7 +68,9 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {[1, 2, 3, 4, 5].map(() => (<ProductCard/>))}
+            {productList?.map((product) => (
+  <ProductCard key={product._id || product.id} product={product} />
+))}
           </div>
         </div>
       </section>
