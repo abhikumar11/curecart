@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DECREASE_QTY, INCREACE_QTY, REMOVE_PRODUCT } from "../constants";
+import { ADD_TO_CART, CLEAR_CART, DECREASE_QTY, INCREACE_QTY, REMOVE_PRODUCT } from "../constants";
 
 const initialState={
     cart:JSON.parse(localStorage.getItem("cart"))||[]
@@ -32,7 +32,9 @@ export const cartReducer=(state=initialState,action)=>{
             return {
         ...state,
         cart: state.cart.map(item =>item._id===action.payload&&item.qty>1?{...item,qty:item.qty-1}:item)
-      };
+      }
+      case CLEAR_CART:
+        return {...state,cart:[]}
       default:return state;
     }
 }

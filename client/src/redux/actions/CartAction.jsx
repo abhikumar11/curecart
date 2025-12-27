@@ -1,4 +1,5 @@
-import { ADD_TO_CART, DECREASE_QTY, INCREACE_QTY, REMOVE_PRODUCT } from "../constants";
+import axios from "axios";
+import { ADD_TO_CART, CLEAR_CART, DECREASE_QTY, INCREACE_QTY, REMOVE_PRODUCT } from "../constants";
 
 const updateLocalStorage = (getState) => {
     const {cart}=getState().userCart;
@@ -20,4 +21,18 @@ export const increaseQty=(pid)=>(dispatch,getState)=>{
 export const decreaseQty=(pid)=>(dispatch,getState)=>{
      dispatch({type:DECREASE_QTY,payload:pid});
     updateLocalStorage(getState);
+}
+export const verifyPayment=(paymentData)=>async(dispatch)=>{
+  try {
+      const {data}=await axios.post("http://localhost:3001/payment/verify",paymentData);
+      console.log(data);
+      if(data.success){
+        dispatch({ type:CLEAR_CART});
+      localStorage.removeItem("cart");
+      return true;
+      }
+  } catch (err) {
+    console.error("Payment Verification Error:", err.response?.data?.message);
+    return false;
+  }
 }

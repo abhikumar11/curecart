@@ -19,7 +19,7 @@ const ProductCard = ({product}) => {
       <div className="relative aspect-square mb-3 flex items-center justify-center overflow-hidden bg-gray-50 rounded-lg">
         <img 
           src={product?.productImages[0]} 
-          alt={product.productName} 
+          alt={product?.productName} 
           className="object-contain h-32 w-32 group-hover:scale-105 transition-transform duration-300" 
         />
       
@@ -31,7 +31,7 @@ const ProductCard = ({product}) => {
           
         </p>
         <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 leading-snug mb-2 group-hover:text-[#24aeb1]">
-          {product.productName}
+          {product?.productName}
         </h3>
         
         <div className="flex items-center gap-1 mb-3">
@@ -44,7 +44,7 @@ const ProductCard = ({product}) => {
       <div className="mt-auto pt-3 border-t border-gray-50">
         <div className="mb-3">
           <p className="text-lg font-black text-gray-900 leading-none">
-            ₹{product.price}
+            ₹{product?.price}
           </p>
         </div>
         

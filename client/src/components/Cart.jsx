@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Trash2, Plus, Minus, ShieldCheck, ChevronRight, Tag } from 'lucide-react';
+import { Trash2, Plus, Minus, ShieldCheck, ChevronRight, Tag,} from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { removeItem, increaseQty, decreaseQty } from "../redux/actions/CartAction";
 
 const CartItem = ({ item }) => {
@@ -121,10 +122,11 @@ const Cart = () => {
             </div>
             
             <div className="p-4 bg-gray-50 border-t">
-              
+              <Link  to="/checkout">
               <button className="w-full bg-[#24aeb1] hover:bg-[#1e8f91] text-white py-4 rounded-lg font-black text-sm tracking-widest shadow-lg transition-all active:scale-[0.98] uppercase">
                 Proceed to Checkout
               </button>
+              </Link>
             </div>
           </div>
         </div>

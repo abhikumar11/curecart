@@ -19,3 +19,4 @@ export const ADD_TO_CART="ADD_TO_CART";
 export const REMOVE_PRODUCT="REMOVE_PRODUCT";
 export const INCREACE_QTY="INCREACE_QTY";
 export const DECREASE_QTY="DECREASE_QTY"; 
+export const CLEAR_CART="CLEAR_CART"; 

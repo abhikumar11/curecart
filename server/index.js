@@ -5,9 +5,13 @@ const cors=require("cors");
 const connectDb = require("./config/DbConnection");
 
 connectDb();
+app.use(cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
-app.use(cors());
 app.use(require("./routes"));
 
 app.listen(3001,()=>{

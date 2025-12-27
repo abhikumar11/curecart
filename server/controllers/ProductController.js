@@ -63,7 +63,7 @@ const addProduct = async (req, res) => {
 const getAllProduct=async(req,res)=>{
         try{
                 const pro=await ProductModel.find();
-                console.log(pro)
+                
                 if(pro){
                    return res.status(200).send(pro);
                 }
