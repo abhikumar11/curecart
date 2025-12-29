@@ -5,7 +5,7 @@ import { ChevronDown } from 'lucide-react';
 
 
 const Product = () => {
-  const categories = ["Vitamins", "Diabetes", "Baby Care", "Homeopathy", "Ayurveda"];
+  const categories = ["Vitamins", "Diabetes", "Cough and Cold","Fever and Pain"];
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -27,7 +27,6 @@ const Product = () => {
                   <option>Popularity</option>
                   <option>Price: Low to High</option>
                   <option>Price: High to Low</option>
-                  <option>Discount</option>
                 </select>
                 <ChevronDown className="absolute right-3 top-2.5 text-gray-400 pointer-events-none" size={16} />
               </div>
