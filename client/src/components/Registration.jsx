@@ -9,7 +9,7 @@ const Registration = () => {
     const [frmData, setFrmData] = useState({ name: "", email: "", password: "" });
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const { loading, error, user } = useSelector((state) => state.userRegister);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const Registration = () => {
 
     return (
         <div className="min-h-screen flex bg-[#f8fafc]">
-            {/* Left Side: Healthcare Illustration & Trust Signals */}
+            { }
             <div className="hidden lg:flex lg:w-[45%] bg-white relative items-center justify-center p-12 border-r border-gray-100">
                 <div className="max-w-md text-center">
                     <div className="inline-flex p-3 bg-teal-50 rounded-2xl mb-6">
@@ -45,10 +45,10 @@ const Registration = () => {
                     <p className="text-gray-500 leading-relaxed mb-8">
                         Join CureCart today to access genuine medicines, healthcare essentials, and expert wellness advice delivered to your doorstep.
                     </p>
-                    
-                    <img 
-                        src="https://plus.unsplash.com/premium_vector-1682269359035-d0de2962d5f9?q=80&w=600&auto=format&fit=crop" 
-                        alt="Healthcare Illustration" 
+
+                    <img
+                        src="https://plus.unsplash.com/premium_vector-1682269359035-d0de2962d5f9?q=80&w=600&auto=format&fit=crop"
+                        alt="Healthcare Illustration"
                         className="rounded-3xl mb-8 mix-blend-multiply"
                     />
 
@@ -63,7 +63,7 @@ const Registration = () => {
                 </div>
             </div>
 
-            {/* Right Side: Registration Form */}
+            { }
             <div className="w-full lg:w-[55%] flex items-center justify-center p-6 md:p-12">
                 <div className="w-full max-w-md">
                     <div className="text-center mb-8">
@@ -73,7 +73,7 @@ const Registration = () => {
 
                     <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl shadow-teal-900/5 border border-gray-50">
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Name Field */}
+                            { }
                             <div>
                                 <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Full Name</label>
                                 <div className="relative group">
@@ -90,7 +90,7 @@ const Registration = () => {
                                 </div>
                             </div>
 
-                            {/* Email Field */}
+                            { }
                             <div>
                                 <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Email Address</label>
                                 <div className="relative group">
@@ -107,7 +107,7 @@ const Registration = () => {
                                 </div>
                             </div>
 
-                            {/* Password Field */}
+                            { }
                             <div>
                                 <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Password</label>
                                 <div className="relative group">
@@ -124,15 +124,14 @@ const Registration = () => {
                                 </div>
                             </div>
 
-                            {/* Submit Button */}
+                            { }
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className={`w-full group flex items-center justify-center gap-2 text-white py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg shadow-teal-600/20 ${
-                                    loading 
-                                    ? 'bg-teal-300 cursor-not-allowed' 
+                                className={`w-full group flex items-center justify-center gap-2 text-white py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg shadow-teal-600/20 ${loading
+                                    ? 'bg-teal-300 cursor-not-allowed'
                                     : 'bg-teal-600 hover:bg-teal-700 hover:shadow-xl active:scale-95'
-                                }`}
+                                    }`}
                             >
                                 {loading ? (
                                     <div className="flex items-center gap-2">
@@ -156,7 +155,7 @@ const Registration = () => {
                             </p>
                         </div>
                     </div>
-                    
+
                     <p className="mt-8 text-center text-[11px] text-gray-400 px-4">
                         By signing up, you agree to CureCart’s <b>Health Safety Guidelines</b>, <b>Terms of Service</b>, and <b>Privacy Policy</b>.
                     </p>

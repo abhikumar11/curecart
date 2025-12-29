@@ -10,9 +10,10 @@ const rzp = new Razorpay({
 
 const createOrder = async (req, res) => {
   try {
-    const { amount } = req.body
+    const { amount } = req.body;
     const options = {
-      amount: amount * 100,
+      amount: amount * 100, 
+
       currency: "INR",
       receipt: `order_rcptid_${Date.now()}`,
     };
@@ -21,7 +22,8 @@ const createOrder = async (req, res) => {
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
-}
+};
+
 const verifyPayment = async (req, res) => {
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature, orderDetails } = req.body;
 
@@ -31,6 +33,12 @@ const verifyPayment = async (req, res) => {
 
   if (generated_signature === razorpay_signature) {
     try {
+
+      const existingOrder = await OrderModel.findOne({ "paymentInfo.id": razorpay_payment_id });
+      if (existingOrder) {
+        return res.status(200).json({ success: true, message: "Order already processed", orderId: existingOrder._id });
+      }
+
       const newOrder = new OrderModel({
         customerId: orderDetails.customerId,
         items: orderDetails.items.map(item => ({
@@ -38,11 +46,21 @@ const verifyPayment = async (req, res) => {
           quantity: item.quantity,
           price: item.price
         })),
+        shippingAddress: orderDetails.shippingAddress, 
+
         totalAmount: orderDetails.totalAmount,
         paymentStatus: "paid",
-        orderStatus: "placed"
+        orderStatus: "placed",
+        paymentInfo: { 
+
+          id: razorpay_payment_id,
+          orderId: razorpay_order_id,
+          status: "captured"
+        }
       });
+
       await newOrder.save();
+
       res.status(200).json({
         success: true,
         message: "Payment successful and order recorded",
@@ -56,7 +74,8 @@ const verifyPayment = async (req, res) => {
       });
     }
   } else {
-    res.status(400).json({ success: false, message: "Invalid Payment Signature"});
+    res.status(400).json({ success: false, message: "Invalid Payment Signature" });
   }
 };
+
 module.exports = { createOrder, verifyPayment };

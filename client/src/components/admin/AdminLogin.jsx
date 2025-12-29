@@ -21,7 +21,7 @@ const AdminLogin = () => {
     useEffect(() => {
         if (error) {
             toast.error(error.message || "Login failed");
-            // Clear error in state here if your reducer supports it to prevent re-toasts
+
         }
     }, [error]);
 
@@ -42,16 +42,16 @@ const AdminLogin = () => {
 
     return (
         <div className="min-h-screen flex bg-white">
-            {/* Left Side: Branding & Info */}
+            { }
             <div className="hidden lg:flex lg:w-1/2 bg-[#0d2e2e] relative overflow-hidden items-center justify-center p-12">
                 <div className="absolute top-0 left-0 w-full h-full opacity-10">
-                    <img 
-                        src="https://plus.unsplash.com/premium_vector-1682269359035-d0de2962d5f9?q=80&w=1112&auto=format&fit=crop" 
-                        alt="Background Pattern" 
+                    <img
+                        src="https://plus.unsplash.com/premium_vector-1682269359035-d0de2962d5f9?q=80&w=1112&auto=format&fit=crop"
+                        alt="Background Pattern"
                         className="w-full h-full object-cover"
                     />
                 </div>
-                
+
                 <div className="relative z-10 max-w-lg text-center">
                     <div className="inline-flex p-4 bg-teal-500/20 rounded-3xl mb-6 backdrop-blur-xl">
                         <ShieldCheck className="text-teal-400" size={48} />
@@ -64,16 +64,16 @@ const AdminLogin = () => {
                     </p>
                 </div>
 
-                {/* Decorative circles */}
+                { }
                 <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-teal-600 rounded-full blur-[120px] opacity-20"></div>
                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-teal-400 rounded-full blur-[120px] opacity-20"></div>
             </div>
 
-            {/* Right Side: Login Form */}
+            { }
             <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 bg-gray-50">
                 <div className="w-full max-w-md">
                     <div className="mb-10 lg:hidden text-center">
-                         <h2 className="text-3xl font-black text-teal-600">CureCart</h2>
+                        <h2 className="text-3xl font-black text-teal-600">CureCart</h2>
                     </div>
 
                     <div className="bg-white p-8 md:p-10 rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100">
@@ -120,11 +120,10 @@ const AdminLogin = () => {
 
                             <button
                                 type="submit"
-                                className={`w-full group flex items-center justify-center gap-2 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-lg shadow-teal-900/20 transition-all duration-300 ${
-                                    loading 
-                                    ? 'bg-teal-400 cursor-not-allowed' 
-                                    : 'bg-teal-600 hover:bg-teal-700 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-xl'
-                                }`}
+                                className={`w-full group flex items-center justify-center gap-2 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-lg shadow-teal-900/20 transition-all duration-300 ${loading
+                                        ? 'bg-teal-400 cursor-not-allowed'
+                                        : 'bg-teal-600 hover:bg-teal-700 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-xl'
+                                    }`}
                                 disabled={loading}
                             >
                                 {loading ? (

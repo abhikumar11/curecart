@@ -1,4 +1,4 @@
-import { CREATE_USER_FAIL, CREATE_USER_REQUEST, CREATE_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGOUT_USER } from "../constants";
+import { CREATE_USER_FAIL, CREATE_USER_REQUEST, CREATE_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGOUT_USER, UPDATE_ADDRESS_FAIL, UPDATE_ADDRESS_REQUEST, UPDATE_ADDRESS_SUCCESS } from "../constants";
 
 const initialState = {
     loading: false,
@@ -19,10 +19,20 @@ export const userRegisterReducer = (state = initialState, action) => {
 
 export const userLoginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_USER_REQUEST: return { ...state, loading: true, error: null };
+        case LOGIN_USER_REQUEST: 
+        case UPDATE_ADDRESS_REQUEST:
+            return { ...state, loading: true, error: null };
+
         case LOGIN_USER_SUCCESS: return { ...state, loading: false, user: action.payload.user, token: action.payload.token };
-        case LOGIN_USER_FAIL: return { ...state, loading: false, user: null, error: action.payload }
+
+        case LOGIN_USER_FAIL:
+        case UPDATE_ADDRESS_FAIL:
+            return { ...state, loading: false, user: null, error: action.payload };
+
         case LOGOUT_USER: return { ...state, user: null, token: null };
+
+        case UPDATE_ADDRESS_SUCCESS:return { ...state, loading: false, user: action.payload.user, error: null };
+
         default: return state;
     }
 }

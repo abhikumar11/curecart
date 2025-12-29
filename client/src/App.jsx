@@ -19,6 +19,9 @@ import Product from './components/Product';
 import OrderSuccess from './components/pages/OrderSuccess';
 import AdminOrders from './components/admin/AdminOders';
 import OrderList from './components/OrderList';
+import Address from './components/Address';
+import ProductDetails from './components/ProductDetails';
+import AdminOrderDetail from './components/admin/AdminOrderDetail';
 
 const App = () => {
   return (
@@ -29,36 +32,39 @@ const App = () => {
         closeOnClick={false}
         theme="light"
       />
-     <Routes>
-  <Route path="/" element={<Layout />}>
-    <Route index element={<Home />} />
-    <Route path="login" element={<Login />} />
-    <Route path="register" element={<Registration />} />
-    <Route path="cart" element={<Cart />} />
-    <Route path="ordersuccess" element={<OrderSuccess />} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Registration />} />
+          <Route path="product/:id" element={<ProductDetails />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="ordersuccess" element={<OrderSuccess />} />
 
-    <Route path="/category/:cat" element={<Product/>}/>
+          <Route path="/category/:cat" element={<Product />} />
 
-    <Route element={<ProtectedRoute />}>
-      <Route path="checkout" element={<Checkout />} />
-      <Route path="sellorder" element={<AdminOrders/>} />
-      <Route path="orders" element={<OrderList/>} />
-      <Route path="orderdetail" element={<Order />} />
-    </Route>
-  </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="sellorder" element={<AdminOrders />} />
+            <Route path="orders" element={<OrderList />} />
+            <Route path="orderdetail/:orderid" element={<Order />} />
+            <Route path="myaddress" element={<Address />} />
+          </Route>
+        </Route>
 
-  <Route path="/seller" element={<AdminLayout />}>
-    <Route path="login" element={<AdminLogin />} />
-    
-    <Route element={<ProtectedRoute adminOnly={true} />}>
-      <Route path="dashboard" element={<AdminDashboard />} />
-      <Route path="products" element={<ProductList />} />
-      <Route path="newproduct" element={<AddProduct />} />
-      <Route path="orders" element={<Oders />} />
-      <Route index element={<Navigate to="dashboard" replace />} />
-    </Route>
-  </Route>
-</Routes>
+        <Route path="/seller" element={<AdminLayout />}>
+          <Route path="login" element={<AdminLogin />} />
+
+          <Route element={<ProtectedRoute adminOnly={true} />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="products" element={<ProductList />} />
+            <Route path="newproduct" element={<AddProduct />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="orderdetail/:orderid" element={<AdminOrderDetail />} />
+            <Route index element={<Navigate to="dashboard" replace />} />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   )
 }

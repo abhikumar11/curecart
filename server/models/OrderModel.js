@@ -11,12 +11,29 @@ const orderSchema = new mongoose.Schema({
             productId: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Product",
+                required: true,
             },
-            quantity: Number,
-            price: Number,
+            name: String, 
+
+            quantity: { type: Number, required: true },
+            price: { type: Number, required: true },
         },
     ],
-    totalAmount: Number,
+    shippingAddress: {
+        type: String,
+        required: true,
+    },
+    totalAmount: {
+        type: Number,
+        required: true,
+    },
+    paymentInfo: {
+        id: { type: String },      
+
+        orderId: { type: String }, 
+
+        status: { type: String },
+    },
     paymentStatus: {
         type: String,
         enum: ["pending", "paid", "failed"],
@@ -27,5 +44,12 @@ const orderSchema = new mongoose.Schema({
         enum: ["placed", "packed", "shipped", "delivered", "cancelled"],
         default: "placed",
     },
+    deliveredAt: {
+        type: Date,
+    }
+}, { 
+    timestamps: true 
+
 });
+
 module.exports = mongoose.model("Order", orderSchema);

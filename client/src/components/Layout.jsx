@@ -80,7 +80,7 @@ const Layout = () => {
                                             <Package size={16} /> My Orders
                                         </Link>
                                         
-                                        <Link to="/my-address" className="flex items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-700 transition">
+                                        <Link to="/myaddress" className="flex items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-700 transition">
                                             <MapPin size={16} /> Saved Addresses
                                         </Link>
 

@@ -65,14 +65,14 @@ const ProductList = () => {
               ) : (
                 productList?.map((item) => (
                   <tr key={item._id} className="hover:bg-gray-50 transition-colors">
-                   
+
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-12 w-12 flex-shrink-0">
-                          <img 
-                            className="h-12 w-12 rounded-lg object-cover border border-gray-100" 
-                            src={item.productImages?.[0] || 'https://via.placeholder.com/150'} 
-                            alt={item.productName} 
+                          <img
+                            className="h-12 w-12 rounded-lg object-cover border border-gray-100"
+                            src={item.productImages?.[0] || 'https://via.placeholder.com/150'}
+                            alt={item.productName}
                           />
                         </div>
                         <div className="ml-4">
@@ -93,10 +93,10 @@ const ProductList = () => {
 
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex flex-col">
-                        <span className={`text-sm font-semibold ${item.inStock==0?'text-red-600':item.inStock>10?"text-green-600":"text-orange-600"}`}>
-                          {item.inStock>0?`${item.inStock} units`:"Out of Stock"}
+                        <span className={`text-sm font-semibold ${item.inStock == 0 ? 'text-red-600' : item.inStock > 10 ? "text-green-600" : "text-orange-600"}`}>
+                          {item.inStock > 0 ? `${item.inStock} units` : "Out of Stock"}
                         </span>
-                        <span className="text-[10px] text-gray-400 uppercase">{item.inStock>0?"Available":""}</span>
+                        <span className="text-[10px] text-gray-400 uppercase">{item.inStock > 0 ? "Available" : ""}</span>
                       </div>
                     </td>
 
